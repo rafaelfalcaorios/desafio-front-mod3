@@ -1,0 +1,51 @@
+.container-main {
+  height: 100vh;
+  width: 100vw;
+
+}
+
+.header-main {
+  background: linear-gradient(90deg, #05EDE3 0%, rgba(100, 96, 251, 1) 100%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-avatar {
+  margin-right: 16px;
+}
+
+.header-avatar:hover {
+  cursor: pointer;
+}
+
+.header-saida {
+  margin-left: 16px;
+}
+
+.header-saida:hover {
+  cursor: pointer;
+}
+
+.container-pagina {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.container-tabela {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  width: 70%;
+  background: #FAFAFA;
+  box-shadow: 0px 2px 11px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-left: 25px;
+  margin-top: 26px
+}
