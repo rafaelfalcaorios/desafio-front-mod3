@@ -1,26 +1,48 @@
 import './styles.css';
+import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import logo from '../../assets/logo.svg';
+import { setItem, getItem } from '../../utils/localStorage';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function SignIn() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
 
-  const [form, setForm] = useState({
-    email: '',
-    senha: ''
-  });
+  useEffect (() => {
+    const token = getItem('token');
 
-  function handleInput(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    if (token) {
+      navigate('/main');
+    }
 
-  }
+  },[]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (!form.email || !form.senha) {
-      return;
+    
+    try {
+      const response = await api.post('/login', {
+        email,
+        senha
+      });
+      
+      if(response.status > 204){
+        return;
+      }
+
+      const { token, usuario } = response.data;
+
+      setItem('token', token);
+      setItem('usuarioId', usuario.id);
+
+      navigate('/main');
+    } catch (error) {
+      console.log(error.response.data.message);
     }
 
   }
@@ -28,7 +50,7 @@ export default function SignIn() {
   return (
     <div className='login-container'>
       <div className='header-div'>
-        <img className='header' src={logo} />
+        <img className='header' src={logo} alt='logo'/>
       </div>
       <div className='container-login-page'>
         <div className='container-text'>
@@ -39,12 +61,8 @@ export default function SignIn() {
           <h2>
             Organizar as suas finanças nunca foi tão fácil, com o DINDIN, você tem tudo num único lugar e em um clique de distância.
           </h2>
-          <button
-            type='button'
-            className='btn'
-            onClick={() => { }}
-          >
-            Cadastre-se
+          <button>
+            <Link to='/cadastro'>Cadastre-se</Link>
           </button>
         </div>
         <div className='container-login'>
@@ -53,18 +71,20 @@ export default function SignIn() {
             <label
               htmlFor='email'>E-mail</label>
             <input
-              name='email'
-              type='text'
-              value={form.email}
-              onChange={handleInput}
+              placeholder='usuario@dominio.com'
+              type='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
 
             <label htmlFor='password'>Password</label>
             <input
-              name='senha'
               type='password'
-              value={form.senha}
-              onChange={handleInput}
+              placeholder='Senha'
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              required
             />
 
             <button

@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Main from './pages/Main';
-import SignIn from './pages/SingIn';
-import Register from './pages/Register'
+import { BrowserRouter } from 'react-router-dom';
+import MainRoutes from './routes';
 
 
 ReactDOM.render(
   <React.StrictMode>
+    <BrowserRouter>
+      <MainRoutes />
+    </BrowserRouter>
     {/* <SignIn /> */}
     {/* <Register /> */}
-    <Main />
+    {/* <Main /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

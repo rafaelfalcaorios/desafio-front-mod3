@@ -1,39 +1,46 @@
 import './styles.css';
 import logo from '../../assets/logo.svg';
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import api from '../../services/api';
 
 export default function Register() {
+  const navigar = useNavigate();
 
-  const [form, setForm] = useState({
-    nome: '',
-    email: '',
-    senha: '',
-    confirmarSenha: ''
-  });
-
-  function handleInput(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  }
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [confirmarSenha, setConfirmarSenha] = useState('');
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (!form.nome || !form.email || !form.senha || !form.confirmarSenha) {
-      return
-    }
-    if (form.senha !== form.confirmarSenha) {
-      return;
-    }
 
-    await handleAddUsuario();
-    setForm({
-      nome: '',
-      email: '',
-      senha: '',
-      confirmarSenha: ''
-    });
-  }
+    try {
 
-  async function handleAddUsuario() {
+      if (!nome || !email || !senha ||!confirmarSenha) {
+        return;
+      }
+
+      if (senha !== confirmarSenha) {
+        return;
+      }
+
+      const response = await api.post('/usuarios', {
+        nome,
+        email,
+        senha,
+        confirmarSenha
+      });
+
+      if (response.status > 204) {
+        return;
+      }
+
+      navigar('/');
+
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
 
   }
 
@@ -48,20 +55,22 @@ export default function Register() {
           <label
             htmlFor='nome'>Nome</label>
           <input
-            name='nome'
+            placeholder='Nome'
             type='text'
-            value={form.nome}
-            onChange={handleInput}
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            required
           />
 
           <label
             htmlFor='email'
           >E-mail</label>
           <input
-            name='email'
+            placeholder='usuario@dominio.com'
             type='text'
-            value={form.email}
-            onChange={handleInput}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
 
           <label
@@ -70,10 +79,11 @@ export default function Register() {
             Senha
           </label>
           <input
-            name='senha'
+            placeholder='Senha'
             type='password'
-            value={form.senha}
-            onChange={handleInput}
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
           />
 
           <label
@@ -82,13 +92,14 @@ export default function Register() {
             Confirmação de senha
           </label>
           <input
-            name='confirmarSenha'
+            placeholder='Confirmar Senha'
             type='password'
-            value={form.confirmarSenha}
-            onChange={handleInput}
+            value={confirmarSenha}
+            onChange={(e) => setConfirmarSenha(e.target.value)}
+            required
           />
           <button>Cadastrar</button>
-          <h3>Já tem cadastro? <a>Clique aqui!</a></h3>
+          <h3>Já tem cadastro? <Link to='/'>Clique aqui!</Link></h3>
         </form>
 
       </div>
