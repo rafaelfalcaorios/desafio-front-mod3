@@ -3,13 +3,47 @@ import logo from '../../assets/logo.svg';
 import avatar from '../../assets/avatar.svg';
 import vector from '../../assets/vector.svg';
 import filtro from '../../assets/filtro.svg';
-import { limpar } from '../../utils/localStorage';
+import { limpar, getItem } from '../../utils/localStorage';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
+import { useEffect, useState } from 'react';
+
 
 
 export default function Main() {
+  const token = getItem('token');
+  const usuarioId = getItem('usuarioId');
+
   const navegar = useNavigate();
+
+  const [form, setForm] = useState({
+    nome:'',
+    data: '',
+    diaDaSemana: '',
+    descricao: '',
+    categoria: '',
+    valor: ''
+  });
+
+  useEffect(() => {
+    async function dadosDaTransacao() {
+      try {
+        const response = await api.get(`/transacao/${usuarioId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        setForm({ ...form, ...response.data })
+      } catch (error) {
+        console.log(error.response.data.message);
+      }
+    }
+
+    dadosDaTransacao();
+    
+  }, []);
+
   async function handleEditarUsuario(e) {
 
   }
@@ -30,7 +64,7 @@ export default function Main() {
             src={avatar}
             alt='Avatar'
           />
-          <h3>Nome usuario</h3>
+          <h3>usuario</h3>
           <img
             className='header-saida'
             onClick={handleSair}
