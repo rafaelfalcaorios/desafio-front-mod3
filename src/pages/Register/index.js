@@ -17,7 +17,7 @@ export default function Register() {
 
     try {
 
-      if (!nome || !email || !senha ||!confirmarSenha) {
+      if (!nome || !email || !senha || !confirmarSenha) {
         return;
       }
 
@@ -29,7 +29,7 @@ export default function Register() {
         nome,
         email,
         senha,
-        confirmarSenha
+        confirmarSenha //esse  confirmarSenha nao deve ser enviado, pois é apenas um campo de confirmação se ta digitado igual, na nossa api de back nao temos esse campo. 
       });
 
       if (response.status > 204) {
@@ -49,60 +49,63 @@ export default function Register() {
       <div className='header-div'>
         <img className='header' src={logo} alt='Logomarca' />
       </div>
-      <div className='container-register'>
-        <h1>Cadastrar-se</h1>
-        <form onSubmit={handleSubmit}>
-          <label
-            htmlFor='nome'>Nome</label>
-          <input
-            placeholder='Nome'
-            type='text'
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            required
-          />
+      <div className='container-cadastro'>
+        <div className='cadastro'>
+          <h1>Cadastrar-se</h1>
+          <form className="form-registro" onSubmit={handleSubmit}>
+            <label
+              htmlFor='nome'>Nome</label>
+            <input
+              placeholder='Nome'
+              type='text'
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              required
+            />
 
-          <label
-            htmlFor='email'
-          >E-mail</label>
-          <input
-            placeholder='usuario@dominio.com'
-            type='text'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+            <label
+              htmlFor='email'
+            >E-mail</label>
+            <input
+              placeholder='usuario@dominio.com'
+              type='text'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
 
-          <label
-            htmlFor='senha'
-          >
-            Senha
-          </label>
-          <input
-            placeholder='Senha'
-            type='password'
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            required
-          />
+            <label
+              htmlFor='senha'
+            >
+              Senha
+            </label>
+            <input
+              placeholder='Senha'
+              type='password'
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              required
+            />
 
-          <label
-            htmlFor='confirmarSenha'
-          >
-            Confirmação de senha
-          </label>
-          <input
-            placeholder='Confirmar Senha'
-            type='password'
-            value={confirmarSenha}
-            onChange={(e) => setConfirmarSenha(e.target.value)}
-            required
-          />
-          <button>Cadastrar</button>
-          <h3>Já tem cadastro? <Link to='/'>Clique aqui!</Link></h3>
-        </form>
+            <label
+              htmlFor='confirmarSenha'
+            >
+              Confirmação de senha
+            </label>
+            <input
+              placeholder='Confirmar Senha'
+              type='password'
+              value={confirmarSenha}
+              onChange={(e) => setConfirmarSenha(e.target.value)}
+              required
+            />
+            <button className='btn-registro'>Cadastrar</button>
+            <h3>Já tem cadastro? <Link to='/'>Clique aqui!</Link></h3>
+          </form>
 
+        </div>
       </div>
+
     </div>
   );
 }

@@ -13,25 +13,25 @@ export default function SignIn() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
-  useEffect (() => {
+  useEffect(() => {
     const token = getItem('token');
 
     if (token) {
       navigate('/main');
     }
 
-  },[]);
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    
+
     try {
       const response = await api.post('/login', {
         email,
         senha
       });
-      
-      if(response.status > 204){
+
+      if (response.status > 204) {
         return;
       }
 
@@ -50,7 +50,7 @@ export default function SignIn() {
   return (
     <div className='login-container'>
       <div className='header-div'>
-        <img className='header' src={logo} alt='logo'/>
+        <img className='header' src={logo} alt='logo' />
       </div>
       <div className='container-login-page'>
         <div className='container-text'>
@@ -58,12 +58,12 @@ export default function SignIn() {
             Controle suas <span className='change-color'>finanças</span>,
             sem planilha chata.
           </h1>
-          <h2>
+          <h3>
             Organizar as suas finanças nunca foi tão fácil, com o DINDIN, você tem tudo num único lugar e em um clique de distância.
-          </h2>
-          <button>
+          </h3>
+          <button className='btn'>
             <Link to='/cadastro'>Cadastre-se</Link>
-          </button>
+          </button> {/* tirar a sublinhado do botao */}
         </div>
         <div className='container-login'>
           <form className='form-login' onSubmit={handleSubmit}>
@@ -88,7 +88,7 @@ export default function SignIn() {
             />
 
             <button
-              className='btn'
+              className='btn entrar'
             >
               Entrar
             </button>
