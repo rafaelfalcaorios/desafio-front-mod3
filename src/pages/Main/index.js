@@ -3,15 +3,20 @@ import logo from '../../assets/logo.svg';
 import avatar from '../../assets/avatar.svg';
 import vector from '../../assets/vector.svg';
 import filtro from '../../assets/filtro.svg';
+import { limpar } from '../../utils/localStorage';
+import { useNavigate } from 'react-router-dom';
+import api from '../../services/api';
 
 
 export default function Main() {
+  const navegar = useNavigate();
   async function handleEditarUsuario(e) {
 
   }
 
   function handleSair() {
-
+    limpar();
+    navegar('/');
   }
 
   return (
@@ -35,7 +40,7 @@ export default function Main() {
         </div>
       </div>
       <div className='filtro'>
-        <img src={filtro} />
+        <img src={filtro} alt='funil'/>
         <span>Filtro</span>
       </div>
       <div className='container-pagina'>
