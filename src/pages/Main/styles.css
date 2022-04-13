@@ -39,13 +39,31 @@
 
 .container-tabela {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 40px;
   width: 70%;
+
+}
+
+.tabela {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  width: 90%;
+
+}
+
+.cabecalho {
   background: #FAFAFA;
   box-shadow: 0px 2px 11px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  margin-top: 26px;
+  height: 40px;
+
+}
+
+.tabela-campo {
   margin-left: 25px;
-  margin-top: 26px
 }

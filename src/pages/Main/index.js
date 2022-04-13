@@ -40,25 +40,48 @@ export default function Main() {
       </div>
       <div className='container-pagina'>
         <div className='container-tabela'>
-          <div className='tabela-campo'>
-            <span>Data</span>
-          </div>
-          <div className='tabela-campo'>
-            <span>Descrição</span>
-          </div>
-          <div className='tabela-campo'>
-            <span>Categoria</span>
-          </div>
-          <div className='tabela-campo'>
-            <span>Valor</span>
-          </div>
-          <div className='tabela-campo editar'>
+          <div className='tabela cabecalho'>
+            <div className='tabela-campo'>
+              <span>Data</span>
+            </div>
+            <div className='tabela-campo'>
+              <span>Descrição</span>
+            </div>
+            <div className='tabela-campo'>
+              <span>Categoria</span>
+            </div>
+            <div className='tabela-campo'>
+              <span>Valor</span>
+            </div>
+            <div className='tabela-campo editar'>
 
-          </div>
-          <div className='tabela-campo deletar'>
+            </div>
+            <div className='tabela-campo deletar'>
 
+            </div>
+          </div>
+          <div className='tabela'>
+            <div className='tabela-campo'>
+              <span>Data</span>
+            </div>
+            <div className='tabela-campo'>
+              <span>Descrição</span>
+            </div>
+            <div className='tabela-campo'>
+              <span>Categoria</span>
+            </div>
+            <div className='tabela-campo'>
+              <span>Valor</span>
+            </div>
+            <div className='tabela-campo editar'>
+
+            </div>
+            <div className='tabela-campo deletar'>
+
+            </div>
           </div>
         </div>
+
         <div className='container-resumo'>
           <h3>Resumo</h3>
           <span>Entradas: valor</span>
