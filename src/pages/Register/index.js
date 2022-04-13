@@ -100,7 +100,7 @@ export default function Register() {
               required
             />
             <button className='btn-registro'>Cadastrar</button>
-            <h3>Já tem cadastro? <Link to='/'>Clique aqui!</Link></h3>
+            <span>Já tem cadastro? <Link to='/'>Clique aqui!</Link></span>
           </form>
 
         </div>
