@@ -16,31 +16,26 @@ export default function Main() {
 
   const navegar = useNavigate();
 
-  const [form, setForm] = useState({
-    nome:'',
-    data: '',
-    diaDaSemana: '',
-    descricao: '',
-    categoria: '',
-    valor: ''
-  });
+  const [form, setForm] = useState([]);
 
   useEffect(() => {
     async function dadosDaTransacao() {
       try {
-        const response = await api.get(`/transacao/${usuarioId}`, {
+        const response = await api.get('/transacao', {
           headers: {
             Authorization: `Bearer ${token}`
           }
         });
 
-        setForm({ ...form, ...response.data })
+        setForm(response.data)
+        
       } catch (error) {
-        console.log(error.response.data.message);
+        console.log(error.message);
       }
     }
-
+    
     dadosDaTransacao();
+    
     
   }, []);
 
@@ -98,6 +93,10 @@ export default function Main() {
 
           </div>
         </div>
+        {form.map(item  => {
+          console.log(item)
+          return (<p key={item.descricao} >{item.descricao}</p>)
+        })}
         <div className='container-resumo'>
           <h3>Resumo</h3>
           <span>Entradas: valor</span>
