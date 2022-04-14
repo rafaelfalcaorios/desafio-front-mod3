@@ -6,3 +6,70 @@
   height: 100vh;
   width: 100vw;
 }
+
+.container-cadastro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cadastro {
+  background-color: #FFFFFF;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+}
+
+.cadastro form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cadastro h1 {
+  color: #7978D9;
+  font-size: 28px;
+  line-height: 33px;
+  margin-bottom: 30px;
+}
+
+.btn-registro {
+  all: unset;
+  background-color: #7978D9;
+  border-radius: 5px;
+  padding: 12px 47px;
+  width: 320px;
+  height: 32px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 30px 0 8px 0;
+}
+
+.form-registro input {
+  all: unset;
+  margin-top: 8px;
+  border: solid 1px rgba(85, 85, 85, 1);
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 40px;
+  width: 420px;
+
+}
+
+.form-registro label {
+  margin-bottom: 8px;
+  font-size: 18px;
+  line-height: 21px;
+  color: #484848;
+}
+
+.form-registro span {
+  color: #7978D9;
+  text-decoration: none;
+}
