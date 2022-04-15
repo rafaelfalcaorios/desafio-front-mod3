@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+
 
 
 
@@ -73,10 +75,13 @@ export default function Main() {
         <span>Filtro</span>
       </div>
       <div className='container-pagina'>
-        <div className='container-tabela'>
+        {/* <div className='container-tabela'>
           <div className='tabela cabecalho'>
             <div className='tabela-campo'>
               <span>Data</span>
+            </div>
+            <div className='tabela-campo'>
+              <span>Dia da semana</span>
             </div>
             <div className='tabela-campo'>
               <span>Descrição</span>
@@ -93,23 +98,57 @@ export default function Main() {
             <div className='tabela-campo deletar'>
 
             </div>
-          </div>
-          {form.map(item  => {
+          </div> */}
+          <table className='container-tabela'>
 
-            return (
+            <thead className='tabela cabecalho'>
+            <tr >
+              <th className='tabela-campo normal'>Data</th>
+              <th className='tabela-campo normal'>Dia da semana</th>
+              <th className='tabela-campo normal'>Descrição</th>
+              <th className='tabela-campo normal'>Categoria</th>
+              <th className='tabela-campo normal'>Valor</th>
+              <th className='tabela-campo editar'></th>
+              <th className='tabela-campo deletar'></th>
+            </tr>
+            </thead>
+
+            <tbody className='tabela'>
+            {form.map (item => {
+              return (
               
-          <div className='tabela'>
+                <tr key={item.id} >
+                  <td className='tabela-campo normal'>{format ( new Date(item.data), 'dd/MM/yy')}</td>
+                  <td className='tabela-campo normal'>{format ( new Date(item.data), 'eeee',{ locale: ptBR })}</td>
+                  <td className='tabela-campo normal'>{item.descricao}</td>
+                  <td className='tabela-campo normal'>{item.categoria_nome}</td>
+                  <td className='tabela-campo normal'>{item.valor}</td>
+                  <td className='tabela-campo editar'></td>
+                  <td className='tabela-campo deletar'></td>
+                </tr>
+               
+              )
+            })}
+            </tbody>
+          </table>
+          {/* {form.map(item  => {
+              
+            return (
+              <div key={item.id} className='tabela'>
             <div className='tabela-campo'>
-              <span key={item.data}>{format ( new Date(item.data), 'dd/MM/yy')}</span>
+              <span >{format ( new Date(item.data), 'dd/MM/yy')}</span>
             </div>
             <div className='tabela-campo'>
-              <span key={item.descricao}>{item.descricao}</span>
+              <span >{format ( new Date(item.data), 'dd')}</span>
             </div>
             <div className='tabela-campo'>
-              <span key={item.categoria}>{item.categoria_nome}</span>
+              <span >{item.descricao}</span>
             </div>
             <div className='tabela-campo'>
-              <span key={item.valor}>{item.valor}</span>
+              <span >{item.categoria_nome}</span>
+            </div>
+            <div className='tabela-campo'>
+              <span >{item.valor}</span>
             </div>
             <div className='tabela-campo editar'>
 
@@ -120,11 +159,8 @@ export default function Main() {
           </div>
           );
         })}
-        </div>
-        {/* {form.map(item  => {
-          console.log(item)
-          return (<p key={item.descricao} >{item.descricao}</p>)
-        })} */}
+        </div> */}
+       
 
         <div className='container-resumo'>
           <h3>Resumo</h3>

@@ -46,7 +46,7 @@
 
 }
 
-.tabela {
+.tabela, tr {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,4 +66,9 @@
 
 .tabela-campo {
   margin-left: 25px;
+  text-align: left;
+}
+
+.normal{
+  width: 18%;
 }
