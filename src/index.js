@@ -10,9 +10,7 @@ ReactDOM.render(
     <BrowserRouter>
       <MainRoutes />
     </BrowserRouter>
-    {/* <SignIn /> */}
-    {/* <Register /> */}
-    {/* <Main /> */}
+
   </React.StrictMode>,
   document.getElementById('root')
 );

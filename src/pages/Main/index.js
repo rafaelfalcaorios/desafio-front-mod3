@@ -3,6 +3,8 @@ import logo from '../../assets/logo.svg';
 import avatar from '../../assets/avatar.svg';
 import vector from '../../assets/vector.svg';
 import filtro from '../../assets/filtro.svg';
+import editar from '../../assets/editar.svg';
+import lixo from '../../assets/lixo.svg';
 import { limpar, getItem } from '../../utils/localStorage';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
@@ -31,14 +33,14 @@ export default function Main() {
         });
 
         setForm(response.data)
-        
+
       } catch (error) {
         console.log(error.message);
       }
     }
-    
+
     dadosDaTransacao();
-    
+
   }, []);
 
   async function handleEditarUsuario(e) {
@@ -71,37 +73,14 @@ export default function Main() {
         </div>
       </div>
       <div className='filtro'>
-        <img src={filtro} alt='funil'/>
+        <img src={filtro} alt='funil' />
         <span>Filtro</span>
       </div>
       <div className='container-pagina'>
-        {/* <div className='container-tabela'>
-          <div className='tabela cabecalho'>
-            <div className='tabela-campo'>
-              <span>Data</span>
-            </div>
-            <div className='tabela-campo'>
-              <span>Dia da semana</span>
-            </div>
-            <div className='tabela-campo'>
-              <span>Descrição</span>
-            </div>
-            <div className='tabela-campo'>
-              <span>Categoria</span>
-            </div>
-            <div className='tabela-campo'>
-              <span>Valor</span>
-            </div>
-            <div className='tabela-campo editar'>
 
-            </div>
-            <div className='tabela-campo deletar'>
+        <table className='container-tabela'>
 
-            </div>
-          </div> */}
-          <table className='container-tabela'>
-
-            <thead className='tabela cabecalho'>
+          <thead className='tabela cabecalho'>
             <tr >
               <th className='tabela-campo normal'>Data</th>
               <th className='tabela-campo normal'>Dia da semana</th>
@@ -111,63 +90,36 @@ export default function Main() {
               <th className='tabela-campo editar'></th>
               <th className='tabela-campo deletar'></th>
             </tr>
-            </thead>
+          </thead>
 
-            <tbody className='tabela'>
-            {form.map (item => {
+          <tbody className='tabela'>
+            {form.map(item => {
               return (
-              
+
                 <tr key={item.id} >
-                  <td className='tabela-campo normal'>{format ( new Date(item.data), 'dd/MM/yy')}</td>
-                  <td className='tabela-campo normal'>{format ( new Date(item.data), 'eeee',{ locale: ptBR })}</td>
+                  <td className='tabela-campo normal'>{format(new Date(item.data), 'dd/MM/yy')}</td>
+                  <td className='tabela-campo normal'>{format(new Date(item.data), 'eeee', { locale: ptBR })}</td>
                   <td className='tabela-campo normal'>{item.descricao}</td>
                   <td className='tabela-campo normal'>{item.categoria_nome}</td>
                   <td className='tabela-campo normal'>{item.valor}</td>
-                  <td className='tabela-campo editar'></td>
-                  <td className='tabela-campo deletar'></td>
+                  <td className='tabela-campo editar'><img src={editar} alt='Edicao' /></td>
+                  <td className='tabela-campo deletar'><img src={lixo} alt='Excluir' /></td>
                 </tr>
-               
+
               )
             })}
-            </tbody>
-          </table>
-          {/* {form.map(item  => {
-              
-            return (
-              <div key={item.id} className='tabela'>
-            <div className='tabela-campo'>
-              <span >{format ( new Date(item.data), 'dd/MM/yy')}</span>
-            </div>
-            <div className='tabela-campo'>
-              <span >{format ( new Date(item.data), 'dd')}</span>
-            </div>
-            <div className='tabela-campo'>
-              <span >{item.descricao}</span>
-            </div>
-            <div className='tabela-campo'>
-              <span >{item.categoria_nome}</span>
-            </div>
-            <div className='tabela-campo'>
-              <span >{item.valor}</span>
-            </div>
-            <div className='tabela-campo editar'>
+          </tbody>
+        </table>
 
-            </div>
-            <div className='tabela-campo deletar'>
-
-            </div>
-          </div>
-          );
-        })}
-        </div> */}
-       
 
         <div className='container-resumo'>
-          <h3>Resumo</h3>
-          <span>Entradas: valor</span>
-          <span>Saídas: valor</span>
-          <span className='total'>Total: valor</span>
-          <button type='button'>Adicionar Registro</button>
+          <div className='resumo'>
+            <h3>Resumo</h3>
+            <span>Entradas: </span>
+            <span>Saídas: </span>
+            <span className='total'>Total: </span>
+          </div>
+          <button type='button' className='registro'>Adicionar Registro</button>
         </div>
       </div>
     </div>

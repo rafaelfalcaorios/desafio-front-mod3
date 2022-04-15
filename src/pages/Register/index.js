@@ -28,8 +28,7 @@ export default function Register() {
       const response = await api.post('/usuarios', {
         nome,
         email,
-        senha,
-        confirmarSenha //esse  confirmarSenha nao deve ser enviado, pois é apenas um campo de confirmação se ta digitado igual, na nossa api de back nao temos esse campo. 
+        senha
       });
 
       if (response.status > 204) {
@@ -100,7 +99,7 @@ export default function Register() {
               required
             />
             <button className='btn-registro'>Cadastrar</button>
-            <span>Já tem cadastro? <Link to='/'>Clique aqui!</Link></span>
+            <span>Já tem cadastro? <Link className='link' to='/'>Clique aqui!</Link></span>
           </form>
 
         </div>

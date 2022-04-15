@@ -15,13 +15,13 @@ function MainRoutes() {
     <Routes>
       <Route path='/' element={<SingIn />} />
       <Route path='/cadastro' element={<Register />} />
-      
 
+      {/* <Route path='/main' element={<Main />} /> */}
       <Route element={<ProtectedRoutes redirectTo='/' />}>
         <Route path='/main' element={<Main />} />
       </Route>
 
-      
+
     </Routes>
 
   );

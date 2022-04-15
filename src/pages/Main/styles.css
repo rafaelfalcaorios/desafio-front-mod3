@@ -33,7 +33,7 @@
 
 .container-pagina {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
 }
 
@@ -46,7 +46,8 @@
 
 }
 
-.tabela, tr {
+.tabela,
+tr {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,6 +70,59 @@
   text-align: left;
 }
 
-.normal{
+.normal {
   width: 18%;
+}
+
+.resumo {
+  display: flex;
+  flex-direction: column;
+  background: #FAFAFA;
+  box-shadow: 0px 2px 11px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 250px;
+  height: 180px;
+  padding: 30px 33px;
+}
+
+.resumo h3 {
+  font-size: 18px;
+  line-height: 21px;
+  margin-bottom: 20px;
+  color: #2F2F2F;
+}
+
+.resumo span {
+  font-size: 13px;
+  line-height: 15px;
+  margin-bottom: 15px;
+  color: #2F2F2F;
+}
+
+.total {
+  border-top: 1px solid #EAEAEA;
+  font-size: 14px;
+  line-height: 17px;
+  color: #2F2F2F;
+  padding: 16px 0px;
+  font-weight: 700;
+}
+
+.registro {
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  all: unset;
+  background-color: #7978D9;
+  border-radius: 5px;
+  padding: 11px 47px;
+  margin-top: 43px;
+  width: 160px;
+  height: 32px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
 }

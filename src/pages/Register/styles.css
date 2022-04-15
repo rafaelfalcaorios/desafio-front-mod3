@@ -63,13 +63,19 @@
 }
 
 .form-registro label {
-  margin-bottom: 8px;
+  margin: 8px 0px 1px 0px;
   font-size: 18px;
   line-height: 21px;
   color: #484848;
+  align-self: flex-start;
 }
 
 .form-registro span {
   color: #7978D9;
   text-decoration: none;
+}
+
+.link {
+  text-decoration: none;
+  color: #7978D9;
 }

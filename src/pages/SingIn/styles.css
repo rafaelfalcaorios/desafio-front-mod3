@@ -75,6 +75,7 @@
 
 .form-login label {
   margin-top: 31px;
+  align-self: flex-start;
 }
 
 .form-login input {
@@ -84,9 +85,16 @@
   box-sizing: border-box;
   border-radius: 5px;
   height: 40px;
-  width: 420px
+  width: 450px;
+  padding: 6px
 }
 
 .entrar {
   margin-top: 60px;
+}
+
+.link-cadastro {
+  text-decoration: none;
+  color: #FFFFFF;
+
 }

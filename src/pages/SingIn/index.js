@@ -62,8 +62,8 @@ export default function SignIn() {
             Organizar as suas finanças nunca foi tão fácil, com o DINDIN, você tem tudo num único lugar e em um clique de distância.
           </h3>
           <button className='btn'>
-            <Link to='/cadastro'>Cadastre-se</Link>
-          </button> {/* tirar a sublinhado do botao */}
+            <Link className='link-cadastro' to='/cadastro'>Cadastre-se</Link>
+          </button>
         </div>
         <div className='container-login'>
           <form className='form-login' onSubmit={handleSubmit}>
