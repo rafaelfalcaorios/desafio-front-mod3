@@ -47,6 +47,38 @@ export default function Main() {
 
   }
 
+  async function handleFiltro() {
+
+  }
+
+  async function handleEditarTransacao(e) {
+    const id = e.target.id;
+    const response = await api.get(`/transacao/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+
+  }
+
+  async function handleExcluirTransacao(e) {
+    const id = e.target.id;
+    const response = await api.delete(`/transacao/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (response.status === 204) {
+
+    }
+  }
+
+  async function handleAdicionarRegistro() {
+
+  }
+
   function handleSair() {
     limpar();
     navegar('/');
@@ -72,9 +104,9 @@ export default function Main() {
           />
         </div>
       </div>
-      <div className='filtro'>
+      <div className='filtro' onClick={handleFiltro}>
         <img src={filtro} alt='funil' />
-        <span>Filtro</span>
+        <span>Filtrar</span>
       </div>
       <div className='container-pagina'>
 
@@ -102,8 +134,8 @@ export default function Main() {
                   <td className='tabela-campo normal'>{item.descricao}</td>
                   <td className='tabela-campo normal'>{item.categoria_nome}</td>
                   <td className='tabela-campo normal'>{item.valor}</td>
-                  <td className='tabela-campo editar'><img src={editar} alt='Edicao' /></td>
-                  <td className='tabela-campo deletar'><img src={lixo} alt='Excluir' /></td>
+                  <td className='tabela-campo editar'><img src={editar} alt='Edicao' onClick={handleEditarTransacao} /></td>
+                  <td className='tabela-campo deletar'><img src={lixo} alt='Excluir' onClick={handleExcluirTransacao} /></td>
                 </tr>
 
               )
@@ -119,7 +151,7 @@ export default function Main() {
             <span>Saídas: </span>
             <span className='total'>Total: </span>
           </div>
-          <button type='button' className='registro'>Adicionar Registro</button>
+          <button type='button' className='registro' onClick={handleAdicionarRegistro}>Adicionar Registro</button>
         </div>
       </div>
     </div>
